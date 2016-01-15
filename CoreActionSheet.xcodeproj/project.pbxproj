@@ -15,7 +15,7 @@
 		899CDEA91C4893C400EF7584 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 899CDEA71C4893C400EF7584 /* LaunchScreen.storyboard */; };
 		899CDEB61C4893EE00EF7584 /* LCActionSheet.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 899CDEB31C4893EE00EF7584 /* LCActionSheet.bundle */; };
 		899CDEB71C4893EE00EF7584 /* LCActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 899CDEB51C4893EE00EF7584 /* LCActionSheet.m */; };
-		899CDEBA1C48956E00EF7584 /* CoreActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 899CDEB91C48956E00EF7584 /* CoreActionSheet.m */; };
+		899CDF291C48A0E500EF7584 /* CoreActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 899CDF281C48A0E500EF7584 /* CoreActionSheet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +32,8 @@
 		899CDEB31C4893EE00EF7584 /* LCActionSheet.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LCActionSheet.bundle; sourceTree = "<group>"; };
 		899CDEB41C4893EE00EF7584 /* LCActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCActionSheet.h; sourceTree = "<group>"; };
 		899CDEB51C4893EE00EF7584 /* LCActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCActionSheet.m; sourceTree = "<group>"; };
-		899CDEB81C48956E00EF7584 /* CoreActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreActionSheet.h; sourceTree = "<group>"; };
-		899CDEB91C48956E00EF7584 /* CoreActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreActionSheet.m; sourceTree = "<group>"; };
+		899CDF271C48A0E500EF7584 /* CoreActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreActionSheet.h; sourceTree = "<group>"; };
+		899CDF281C48A0E500EF7584 /* CoreActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreActionSheet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +91,8 @@
 		899CDEB01C4893E200EF7584 /* CoreActionSheet */ = {
 			isa = PBXGroup;
 			children = (
+				899CDF271C48A0E500EF7584 /* CoreActionSheet.h */,
+				899CDF281C48A0E500EF7584 /* CoreActionSheet.m */,
 				899CDEB11C4893E200EF7584 /* Lib */,
 			);
 			path = CoreActionSheet;
@@ -100,8 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				899CDEB21C4893EE00EF7584 /* LCActionSheet */,
-				899CDEB81C48956E00EF7584 /* CoreActionSheet.h */,
-				899CDEB91C48956E00EF7584 /* CoreActionSheet.m */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -191,7 +191,7 @@
 				899CDEA11C4893C400EF7584 /* ViewController.m in Sources */,
 				899CDE9E1C4893C400EF7584 /* AppDelegate.m in Sources */,
 				899CDE9B1C4893C400EF7584 /* main.m in Sources */,
-				899CDEBA1C48956E00EF7584 /* CoreActionSheet.m in Sources */,
+				899CDF291C48A0E500EF7584 /* CoreActionSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +340,7 @@
 				899CDEAF1C4893C400EF7584 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
