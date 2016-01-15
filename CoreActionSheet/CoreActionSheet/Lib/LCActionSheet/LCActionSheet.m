@@ -120,11 +120,20 @@
 - (void)setupMainView {
     
     // 暗黑色的view
-    UIView *darkView = [[UIView alloc] init];
+    UIView *darkView = nil;
+    if([UIDevice currentDevice].systemVersion.floatValue >= 8.0){
+        UIVisualEffectView *ev = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
+        darkView = ev;
+    }else{
+        UIToolbar *toolBar = [[UIToolbar alloc]init];
+        toolBar.barStyle = UIBarStyleBlackOpaque;
+        darkView = toolBar;
+    }
+    
+    darkView.frame = (CGRect){0, 0, SCREEN_SIZE};
+    
     [darkView setAlpha:0];
-    [darkView setUserInteractionEnabled:NO];
-    [darkView setFrame:(CGRect){0, 0, SCREEN_SIZE}];
-    [darkView setBackgroundColor:LCColor(46, 49, 50)];
+    
     [self addSubview:darkView];
     _darkView = darkView;
     
@@ -318,7 +327,7 @@
     
     [UIView animateWithDuration:0.25f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         
-        [_darkView setAlpha:0.6f];
+        [_darkView setAlpha:1];
         [_darkView setUserInteractionEnabled:YES];
         
         CGRect frame = _bottomView.frame;
