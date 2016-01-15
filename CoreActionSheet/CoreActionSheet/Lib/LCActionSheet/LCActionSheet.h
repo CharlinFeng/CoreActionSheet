@@ -46,7 +46,9 @@ typedef void(^LCActionSheetBlock)(NSInteger buttonIndex);
 /**
  *  Default is Black
  */
-@property (nonatomic, strong) UIColor *textColor;
+@property (nonatomic, strong) UIColor *titleColor,*textColor,*lineColor,*separaterColor;
+
+
 
 #pragma mark - Delegate Way
 

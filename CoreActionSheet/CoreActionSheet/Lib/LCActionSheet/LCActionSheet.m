@@ -120,15 +120,8 @@
 - (void)setupMainView {
     
     // 暗黑色的view
-    UIView *darkView = nil;
-    if([UIDevice currentDevice].systemVersion.floatValue >= 8.0){
-        UIVisualEffectView *ev = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
-        darkView = ev;
-    }else{
-        UIToolbar *toolBar = [[UIToolbar alloc]init];
-        toolBar.barStyle = UIBarStyleBlackOpaque;
-        darkView = toolBar;
-    }
+    UIView *darkView = [[UIView alloc] init];
+    darkView.backgroundColor = [UIColor blackColor];
     
     darkView.frame = (CGRect){0, 0, SCREEN_SIZE};
     
@@ -142,7 +135,6 @@
     
     // 所有按钮的底部view
     UIView *bottomView = [[UIView alloc] init];
-    [bottomView setBackgroundColor:LCColor(233, 233, 238)];
     _bottomView = bottomView;
     
     if (self.title) {
@@ -154,7 +146,7 @@
         }
         
         UIView *titleBgView = [[UIView alloc] init];
-        titleBgView.backgroundColor = [UIColor whiteColor];
+        titleBgView.backgroundColor = [UIColor clearColor];
         titleBgView.frame = CGRectMake(0, -vSpace, SCREEN_SIZE.width, BUTTON_H + vSpace);
         [bottomView addSubview:titleBgView];
         
@@ -162,10 +154,10 @@
         UILabel *label = [[UILabel alloc] init];
         [label setText:self.title];
         [label setNumberOfLines:2.0f];
-        [label setTextColor:LCColor(111, 111, 111)];
+        [label setTextColor:self.titleColor];
         [label setTextAlignment:NSTextAlignmentCenter];
         [label setFont:[UIFont systemFontOfSize:13.0f]];
-        [label setBackgroundColor:[UIColor whiteColor]];
+        [label setBackgroundColor:[UIColor clearColor]];
         [label setFrame:CGRectMake(15.0f, 0, SCREEN_SIZE.width - 30.0f, titleBgView.frame.size.height)];
         [titleBgView addSubview:label];
     }
@@ -180,7 +172,7 @@
             // 所有按钮
             UIButton *btn = [[UIButton alloc] init];
             [btn setTag:i];
-            [btn setBackgroundColor:[UIColor whiteColor]];
+            [btn setBackgroundColor:[UIColor clearColor]];
             [btn setTitle:self.buttonTitles[i] forState:UIControlStateNormal];
             [[btn titleLabel] setFont:self.textFont];
             UIColor *titleColor = nil;
@@ -191,6 +183,7 @@
             } else {
                 
                 titleColor = self.textColor ;
+                
             }
             [btn setTitleColor:titleColor forState:UIControlStateNormal];
             
@@ -209,9 +202,9 @@
             
             // 所有线条
             UIView *line = [[UIView alloc] init];
-            line.backgroundColor = LCColor(241, 241, 241);
+            line.backgroundColor = self.lineColor;
             CGFloat lineY = (i + (self.title ? 1 : 0)) * BUTTON_H;
-            [line setFrame:CGRectMake(0, lineY, SCREEN_SIZE.width, 1.0f)];
+            [line setFrame:CGRectMake(0, lineY, SCREEN_SIZE.width, .5f)];
             [bottomView addSubview:line];
         }
     }
@@ -219,11 +212,10 @@
     // 取消按钮
     UIButton *cancelBtn = [[UIButton alloc] init];
     [cancelBtn setTag:self.buttonTitles.count];
-    [cancelBtn setBackgroundColor:[UIColor whiteColor]];
+    [cancelBtn setBackgroundColor:[UIColor clearColor]];
     [cancelBtn setTitle:self.cancelText forState:UIControlStateNormal];
     [[cancelBtn titleLabel] setFont:self.textFont];
     [cancelBtn setTitleColor:self.textColor forState:UIControlStateNormal];
-    [cancelBtn setBackgroundImage:[UIImage imageNamed:@"bgImage_HL"] forState:UIControlStateHighlighted];
     [cancelBtn addTarget:self action:@selector(didClickCancelBtn) forControlEvents:UIControlEventTouchUpInside];
     
     CGFloat btnY = BUTTON_H * (self.buttonTitles.count + (self.title ? 1 : 0)) + 5.0f;
@@ -232,6 +224,25 @@
     
     CGFloat bottomH = (self.title ? BUTTON_H : 0) + BUTTON_H * self.buttonTitles.count + BUTTON_H + 5.0f;
     [bottomView setFrame:CGRectMake(0, SCREEN_SIZE.height, SCREEN_SIZE.width, bottomH)];
+    
+    UIView *bg = nil;
+    if([UIDevice currentDevice].systemVersion.floatValue >= 8.0){
+        UIVisualEffectView *ev = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
+        bg = ev;
+    }else{
+        UIToolbar *toolBar = [[UIToolbar alloc]init];
+        toolBar.barStyle = UIBarStyleBlackOpaque;
+        bg = toolBar;
+    }
+    
+    bg.frame = bottomView.bounds;
+    [bottomView insertSubview:bg atIndex:0];
+    
+    UIView *separaterView = [[UIView alloc] init];
+    separaterView.backgroundColor = self.separaterColor;
+    
+    separaterView.frame = CGRectMake(0, bottomH - 58, SCREEN_SIZE.width, 5);
+    [bottomView addSubview:separaterView];
     
     [self setFrame:(CGRect){0, 0, SCREEN_SIZE}];
 }
@@ -323,7 +334,7 @@
     
     [UIView animateWithDuration:0.25f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         
-        [_darkView setAlpha:1];
+        [_darkView setAlpha:0.3];
         [_darkView setUserInteractionEnabled:YES];
         
         CGRect frame = _bottomView.frame;

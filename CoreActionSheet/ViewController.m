@@ -24,7 +24,7 @@
 
 - (IBAction)btnClick:(id)sender {
     
-    [CoreActionSheet showActionSheetWithTitle:@"请选择" buttonTitles:@[@"相册",@"拍摄"] redButtonIndex:0 clicked:^(NSInteger buttonIndex) {
+    [CoreActionSheet showActionSheetWithTitle:@"请选择" buttonTitles:@[@"相册",@"拍摄",@"拍摄"] redButtonIndex:0 clicked:^(NSInteger buttonIndex) {
         NSLog(@"%i",buttonIndex);
     }];
 }

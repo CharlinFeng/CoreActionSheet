@@ -17,6 +17,10 @@
 
     LCActionSheet *sheet = [LCActionSheet sheetWithTitle:title buttonTitles:buttonTitles redButtonIndex:redButtonIndex clicked:clicked];
     
+    sheet.textColor = [UIColor whiteColor];
+    sheet.lineColor = [UIColor colorWithWhite:1 alpha:0.2];
+    sheet.separaterColor = [UIColor colorWithWhite:0.4 alpha:0.2];
+    sheet.titleColor = [UIColor lightGrayColor];
     [sheet show];
 }
 
