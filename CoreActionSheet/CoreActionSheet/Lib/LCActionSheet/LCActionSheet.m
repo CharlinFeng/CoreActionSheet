@@ -207,13 +207,9 @@
         
         for (int i = 0; i < self.buttonTitles.count; i++) {
             
-            NSString *linePath = [bundlePath stringByAppendingPathComponent:@"cellLine@2x.png"];
-            UIImage *lineImage = [UIImage imageWithContentsOfFile:linePath];
-            
             // 所有线条
-            UIImageView *line = [[UIImageView alloc] init];
-            [line setImage:lineImage];
-            [line setContentMode:UIViewContentModeCenter];
+            UIView *line = [[UIView alloc] init];
+            line.backgroundColor = LCColor(241, 241, 241);
             CGFloat lineY = (i + (self.title ? 1 : 0)) * BUTTON_H;
             [line setFrame:CGRectMake(0, lineY, SCREEN_SIZE.width, 1.0f)];
             [bottomView addSubview:line];
