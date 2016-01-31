@@ -17,10 +17,10 @@
 
     LCActionSheet *sheet = [LCActionSheet sheetWithTitle:title buttonTitles:buttonTitles redButtonIndex:redButtonIndex clicked:clicked];
     
-    sheet.textColor = [UIColor whiteColor];
-    sheet.lineColor = [UIColor colorWithWhite:1 alpha:0.2];
-    sheet.separaterColor = [UIColor colorWithWhite:0.4 alpha:0.2];
-    sheet.titleColor = [UIColor lightGrayColor];
+    sheet.textColor = isActionSheetModeNightModel ? [UIColor whiteColor] : [UIColor blackColor];
+    sheet.lineColor = isActionSheetModeNightModel ? [UIColor colorWithWhite:1 alpha:0.2] : [UIColor colorWithWhite:0 alpha:0.25];
+    sheet.separaterColor = isActionSheetModeNightModel ? [UIColor colorWithWhite:0.4 alpha:0.2] : [UIColor colorWithWhite:0.6 alpha:0.1];
+    sheet.titleColor = isActionSheetModeNightModel ? [UIColor whiteColor] : [UIColor blackColor];
     [sheet show];
 }
 

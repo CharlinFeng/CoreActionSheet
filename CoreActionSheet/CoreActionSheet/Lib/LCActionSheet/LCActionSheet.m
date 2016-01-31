@@ -8,6 +8,8 @@
 //
 //  V 1.1.1
 
+
+
 #import "LCActionSheet.h"
 
 // 按钮高度
@@ -227,11 +229,15 @@
     
     UIView *bg = nil;
     if([UIDevice currentDevice].systemVersion.floatValue >= 8.0){
-        UIVisualEffectView *ev = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
+    
+        UIBlurEffectStyle style = isActionSheetModeNightModel ? UIBlurEffectStyleDark : UIBlurEffectStyleExtraLight;
+    
+        UIVisualEffectView *ev = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:style]];
         bg = ev;
     }else{
         UIToolbar *toolBar = [[UIToolbar alloc]init];
-        toolBar.barStyle = UIBarStyleBlackOpaque;
+        UIBarStyle style = isActionSheetModeNightModel ? UIBarStyleBlack : UIBarStyleDefault;
+        toolBar.barStyle = style;
         bg = toolBar;
     }
     

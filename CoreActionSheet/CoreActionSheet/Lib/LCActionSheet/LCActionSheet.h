@@ -8,6 +8,10 @@
 //
 //  V 1.1.1
 
+#define isActionSheetModeNightModel 1
+
+
+
 #import <UIKit/UIKit.h>
 
 @class LCActionSheet;
